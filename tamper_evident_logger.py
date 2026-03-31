@@ -36,7 +36,9 @@ def _load_logs() -> list:
             content = fh.read().strip()
         if not content:
             return []
-        return json.loads(content)
+        data = json.loads(content)
+        data.sort(key=lambda e: e.get("index", 0))
+        return data
     except json.JSONDecodeError as exc:
         print(f"[WARNING] Log file corrupted or invalid JSON: {exc}")
         return []
@@ -46,12 +48,13 @@ def _load_logs() -> list:
 
 
 def _save_logs(logs: list) -> None:
+    logs_sorted = sorted(logs, key=lambda e: e.get("index", 0))
     if os.path.exists(LOG_FILE):
         shutil.copy2(LOG_FILE, BACKUP_FILE)
     tmp_path = LOG_FILE + ".tmp"
     try:
         with open(tmp_path, "w", encoding="utf-8") as fh:
-            json.dump(logs, fh, indent=2, ensure_ascii=False)
+            json.dump(logs_sorted, fh, indent=2, ensure_ascii=False)
         os.replace(tmp_path, LOG_FILE)
     except OSError as exc:
         if os.path.exists(tmp_path):
@@ -102,12 +105,17 @@ def add_log(event: str, description: str) -> dict:
     _validate_input(event, description)
 
     logs = _load_logs()
-    prev_hash = logs[-1]["current_hash"] if logs else GENESIS_HASH
+    if logs:
+        next_index = logs[-1]["index"] + 1
+        prev_hash = logs[-1]["current_hash"]
+    else:
+        next_index = 0
+        prev_hash = GENESIS_HASH
     timestamp = _now_iso()
     current_hash = _compute_hmac(timestamp, event, description, prev_hash)
 
     entry = {
-        "index": len(logs),
+        "index": next_index,
         "timestamp": timestamp,
         "event": event,
         "description": description,
