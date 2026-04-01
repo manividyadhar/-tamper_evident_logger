@@ -14,7 +14,26 @@ ALERT_FILE = os.path.join(BASE_DIR, "alerts.log")
 EXPORT_FILE = os.path.join(BASE_DIR, "logs_export.txt")
 BACKUP_FILE = os.path.join(BASE_DIR, "logs.json.bak")
 GENESIS_HASH = "0"
-SECRET_KEY = b"T@mp3r-Ev1d3nt-S3cr3t-K3y-2024!"
+def _load_secret_key() -> bytes:
+    """
+    Securely retrieves the secret key from the environment.
+    Ensures the key is present and converts it to bytes for HMAC use.
+    """
+    key = os.environ.get("SECRET_KEY")
+    if not key:
+        # Crucial security step: Do not proceed without a valid key.
+        raise EnvironmentError(
+            "CRITICAL SECURITY ERROR: 'SECRET_KEY' environment variable is not set. "
+            "Please set it using 'export SECRET_KEY=your_key' or equivalent."
+        )
+    return key.encode("utf-8")
+
+
+try:
+    SECRET_KEY = _load_secret_key()
+except EnvironmentError as e:
+    print(f"\n[FATAL] {e}")
+    sys.exit(1)
 RATE_LIMIT_SECONDS = 2
 _last_log_time: float = 0.0
 

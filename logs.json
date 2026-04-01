@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "index": 999,
+    "timestamp": "2026-04-01T03:52:16.964978Z",
+    "event": "USER_LOGIN",
+    "description": "User 'alice' authenticated via MFA from 10.0.0.42.",
+    "prev_hash": "9a79c0a8154423af5e38b0cbce82edae2d23cf7ed5cf6654514dfce8f96a3b1f",
+    "current_hash": "366e38a284fbec46568f4154d79223aa3426e47c8bafd88c2183004defdbfa93"
+  },
+  {
+    "index": 0,
+    "timestamp": "2026-04-01T03:52:16.930985Z",
+    "event": "SYSTEM_START",
+    "description": "Application server initialised on port 8443.",
+    "prev_hash": "0",
+    "current_hash": "9a79c0a8154423af5e38b0cbce82edae2d23cf7ed5cf6654514dfce8f96a3b1f"
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-04-01T03:52:17.041356Z",
+    "event": "FILE_ACCESS",
+    "description": "Sensitive file '/etc/shadow' read by process PID 4412.",
+    "prev_hash": "402c1baec59ab139a4ba36797eabc8efe75d021e4ecfe4666830d1112428e3b1",
+    "current_hash": "cbbc9df09355ef003107c1d437d4ed916668c740bcd9daa199f4336e1057fdac"
+  }
+]

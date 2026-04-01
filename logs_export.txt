@@ -1,1 +1,27 @@
+========================================================================
+  TAMPER-EVIDENT LOG EXPORT
+  Generated     : 2026-04-01T03:52:17.287005Z
+  Total Entries : 3
+========================================================================
 
+Index       : 0
+Timestamp   : 2026-04-01T03:52:16.930985Z
+Event       : SYSTEM_START
+Description : Application server initialised on port 8443.
+Prev Hash   : 0
+Curr Hash   : 9a79c0a8154423af5e38b0cbce82edae2d23cf7ed5cf6654514dfce8f96a3b1f
+------------------------------------------------------------------------
+Index       : 3
+Timestamp   : 2026-04-01T03:52:17.041356Z
+Event       : FILE_ACCESS
+Description : Sensitive file '/etc/shadow' read by process PID 4412.
+Prev Hash   : 402c1baec59ab139a4ba36797eabc8efe75d021e4ecfe4666830d1112428e3b1
+Curr Hash   : cbbc9df09355ef003107c1d437d4ed916668c740bcd9daa199f4336e1057fdac
+------------------------------------------------------------------------
+Index       : 999
+Timestamp   : 2026-04-01T03:52:16.964978Z
+Event       : USER_LOGIN
+Description : User 'alice' authenticated via MFA from 10.0.0.42.
+Prev Hash   : 9a79c0a8154423af5e38b0cbce82edae2d23cf7ed5cf6654514dfce8f96a3b1f
+Curr Hash   : 366e38a284fbec46568f4154d79223aa3426e47c8bafd88c2183004defdbfa93
+------------------------------------------------------------------------

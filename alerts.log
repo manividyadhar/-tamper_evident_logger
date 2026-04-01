@@ -1,1 +1,10 @@
 
+[2026-04-01T03:52:17.132824Z] ALERT | Entry 1 | HMAC mismatch | stored=366e38a284fbec46... expected=9018d436da2096b3...
+[2026-04-01T03:52:17.180729Z] ALERT | Entry 2 | Index field is 3 but expected 2. Index tampering detected.
+[2026-04-01T03:52:17.186158Z] ALERT | Entry 2 | Chain link broken — deletion or reorder detected.
+[2026-04-01T03:52:17.232861Z] ALERT | Entry 2 | Index field is 3 but expected 2. Index tampering detected.
+[2026-04-01T03:52:17.235054Z] ALERT | Entry 2 | Chain link broken — deletion or reorder detected.
+[2026-04-01T03:52:17.274947Z] ALERT | Entry 1 | Index field is 3 but expected 1. Index tampering detected.
+[2026-04-01T03:52:17.277584Z] ALERT | Entry 1 | Chain link broken — deletion or reorder detected.
+[2026-04-01T03:52:17.279430Z] ALERT | Entry 2 | Index field is 999 but expected 2. Index tampering detected.
+[2026-04-01T03:52:17.281892Z] ALERT | Entry 2 | Chain link broken — deletion or reorder detected.
